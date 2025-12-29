@@ -1,8 +1,14 @@
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
+    const [ toExport, setToExport ] = useState("");
 
-  return (
+    function exportJSON(): void {
+        setToExport("export this");
+    }
+
+    return (
     <>
         <div className="overlay">
             <div className="top pane">
@@ -20,8 +26,15 @@ function App() {
                 Properties
             </div>
             <div className="bottom pane">
-                Footer
+                <button onClick={ exportJSON }>Export</button>
             </div>
+
+            {toExport !== "" &&
+                <div className="export pane">
+                    <textarea value={toExport}></textarea>
+                    <button onClick={() => setToExport("")}>close</button>
+                </div>
+            }
         </div>
         <div className="editor">
             <div className="screen">
@@ -29,7 +42,7 @@ function App() {
             </div>
         </div>
     </>
-  )
+    )
 }
 
 export default App
