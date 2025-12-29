@@ -4,19 +4,27 @@ function App() {
 
   return (
     <>
-        <div className="left menu">
-            <div className="library pane">
-                Add components
+        <div className="overlay">
+            <div className="top pane">
+                <h2>Settings</h2>
             </div>
-            <div className="contents pane">
-                Existing components
+            <div className="left pane">
+                <div className="library menu">
+                    Add components
+                </div>
+                <div className="contents menu">
+                    Existing components
+                </div>
             </div>
-        </div>
-        <div className="right menu">
-            Properties
+            <div className="right pane">
+                Properties
+            </div>
+            <div className="bottom pane">
+                Footer
+            </div>
         </div>
         <div className="editor">
-            <div className="screen pane">
+            <div className="screen">
 
             </div>
         </div>
