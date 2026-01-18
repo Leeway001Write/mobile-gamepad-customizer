@@ -1,17 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 import Screen from './components/Screen'
 import { type ButtonProps } from './components/Screen'
 
 function App() {
-    const [ toExport, setToExport ] = useState("");
-
-    function exportJSON(): void {
-        setToExport("export this");
-    }
-
-    const data: ButtonProps = {
+    const defaultProps: ButtonProps = {
         appearance: {
             position: {
                 x: 25,
@@ -38,11 +32,7 @@ function App() {
                 textAlignX: 'left',
                 textAlignY: 'top',
 
-                image: {
-                    source: "https://duckduckgo.com/i/f0521b601b3e6d3f.jpg",
-                    fit: "cover",
-                    opacity: 0.5,
-                }
+                image: undefined,
             },
             pressed: {
                 color: '777777',
@@ -66,6 +56,32 @@ function App() {
         },
     }
 
+    const [ toExport, setToExport ] = useState(defaultProps);
+    const [ exporting, setExporting ] = useState(false);
+
+    function exportJSON(): void {
+        setExporting(true);
+        const exportBox = document.getElementById("export-box") as HTMLTextAreaElement;
+        exportBox.value = JSON.stringify(toExport, null, 2);
+        // localStorage.setItem("autosave", JSON.stringify(toExport));
+    }
+
+    function importJSON(): void {
+        const exportBox = document.getElementById("export-box") as HTMLTextAreaElement;
+        const imported = JSON.parse(exportBox.value);
+        setToExport(imported);
+        setExporting(false);
+    }
+
+    useEffect(() => {
+        const autosave = localStorage.getItem("autosave");
+        if (autosave) {
+            setToExport(JSON.parse(autosave));
+        } else {
+            setToExport(defaultProps);
+        }
+    }, [])
+
     return (
     <>
         <div className="overlay">
@@ -87,16 +103,16 @@ function App() {
                 <button onClick={ exportJSON }>Export</button>
             </div>
 
-            {toExport !== "" &&
+            {exporting &&
                 <div className="export pane">
-                    <textarea value={toExport}></textarea>
-                    <button onClick={() => setToExport("")}>close</button>
+                    <textarea id="export-box"></textarea>
+                    <button onClick={importJSON}>close</button>
                 </div>
             }
         </div>
         <div className="editor">
             <div className="screen">
-                <Screen {...data} />
+                <Screen {...toExport} />
             </div>
         </div>
     </>
