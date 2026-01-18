@@ -116,7 +116,7 @@ export default function Screen(props: ButtonProps) {
                 }}>
                     {style.text}
                 </p>
-                {style.image !== undefined && style.image.source !== "" && <img src={style.image.source} style={{position: 'absolute', width: "100%", height: "100%", objectFit: style.image.fit, opacity: style.image.opacity}}/>}
+                {style.image !== undefined && style.image.source !== "" && <img src={style.image.source} style={{position: 'absolute', width: "100%", height: "100%", objectFit: style.image.fit, opacity: style.image.opacity, borderRadius: borderRadius}}/>}
         </div>
     )
 }
