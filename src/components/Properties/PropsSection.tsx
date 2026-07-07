@@ -1,5 +1,4 @@
 
-import { useState, type FocusEventHandler } from "react";
 import type { FieldNode } from "../../properties"
 import PropsField from "./PropsField";
 
@@ -9,6 +8,7 @@ type Props = {
     currentPath?: string // Only included in recursive calls. First call generates path root
 };
 
+/* React Component that recursively generates nested sections of controller component properties */
 export default function PropsSection({propsFields, editHandler, currentPath}: Props) {
     return (
         <>
@@ -18,7 +18,7 @@ export default function PropsSection({propsFields, editHandler, currentPath}: Pr
                 // Leaf node
                 return (
                     <p className={"props-field"} key={key}>
-                        {key}<PropsField type={field.type} defaultVal={field.default as string} editHandler={(e: Event) => editHandler(e)} path={currentPath + "." + key} />
+                        {key}<PropsField type={field.type} initialVal={field.default as string} editHandler={(e: Event) => editHandler(e)} path={currentPath + "." + key} />
                     </p>
                 );
             }

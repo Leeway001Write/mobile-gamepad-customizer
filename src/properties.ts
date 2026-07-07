@@ -1,12 +1,14 @@
-type FieldNode = {
+/* Type allows me to create an editor schema that is easily rendered as a form */
+type FieldNode =
+{ // Field / Leaf node
     type: string,
     default?: string | number 
 } |
-{
+{ // Group / Parent node
     fields: Record<string, FieldNode>
 };
 
-const schemas = {
+const templates = {
     Button: {
         appearance: {
             fields: {
@@ -61,4 +63,4 @@ const schemas = {
 }
 
 export { type FieldNode }
-export { schemas }
+export { templates }

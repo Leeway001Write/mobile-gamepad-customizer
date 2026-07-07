@@ -1,11 +1,12 @@
 import { useState } from "react"
 
-import { schemas } from "../../properties"
+import { templates } from "../../properties"
 import PropsSection from './PropsSection';
 
 export default function Properties() {
-    const [userInput, setUserInput] = useState<Record<string, any>>({});
+    const [userInput, setUserInput] = useState<Record<string, any>>({}); // Keeps track of values indexed by string paths. This allows easy mapping to the internal schema later
 
+    /* Handler for whenever user has updated values */
     function onEdit(e: FocusEvent) {
         const inputEl = e.target as HTMLInputElement;
         const path = inputEl.name;
@@ -43,7 +44,7 @@ export default function Properties() {
     return (
         <>
             Properties
-            <PropsSection propsFields={schemas.Button} editHandler={onEdit}/>
+            <PropsSection propsFields={templates.Button} editHandler={onEdit}/>
         </>
     )
 }
