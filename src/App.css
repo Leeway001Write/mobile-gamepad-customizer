@@ -31,6 +31,9 @@ h1, h2, h3 {
 .top {  
     grid-row: 1;
     grid-column: 1 / -1;
+
+    display: flex;
+    justify-content: space-evenly;
 }
 .left {
     grid-row: 2 / -1;
@@ -39,6 +42,11 @@ h1, h2, h3 {
 .right {
     grid-row: 2 / 4;
     grid-column: 3;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: scroll;
 }
 .bottom {
     grid-row: 3;
@@ -74,4 +82,25 @@ h1, h2, h3 {
     aspect-ratio: 1.75;
 
     background-color: white;
+}
+
+.props-group {
+    border: 1px solid lightgray;
+    margin: 6px 0 6px 0;
+    padding: 3px;
+}
+.props-header {
+    font-weight: bold;
+    /* text-transform: uppercase; */
+}
+.props-fields {
+    display: block;
+    padding: 3px 3px 6px 18px;
+
+
+    font-weight: normal;
+    /* text-transform: none; */
+}
+.props-field {
+    margin:0;
 }

@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 import Screen from './components/Screen'
+
+import { schemas } from './properties';
 import { type ButtonProps } from './components/Screen'
+import PropsSection from './components/PropsSection';
 
 function App() {
     const defaultProps: ButtonProps = {
@@ -86,6 +89,7 @@ function App() {
     <>
         <div className="overlay">
             <div className="top pane">
+                <button onClick={ exportJSON }>Export</button>
                 <h2>Settings</h2>
             </div>
             <div className="left pane">
@@ -98,9 +102,11 @@ function App() {
             </div>
             <div className="right pane">
                 Properties
+                <PropsSection propsFields={schemas.Button} />
+                <button>Save</button>
             </div>
             <div className="bottom pane">
-                <button onClick={ exportJSON }>Export</button>
+                Footer
             </div>
 
             {exporting &&
