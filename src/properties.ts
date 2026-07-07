@@ -1,6 +1,9 @@
 type FieldNode = {
-    type?: string,
-    fields?: Record<string, FieldNode>
+    type: string,
+    default: string | number 
+} |
+{
+    fields: Record<string, FieldNode>
 };
 
 const schemas = {
@@ -11,7 +14,7 @@ const schemas = {
                     type: 'color'
                 },
                 opacity: {
-                    type: 'fraction'
+                    type: 'percent'
                 },
                 position: {
                     fields: {
@@ -37,6 +40,7 @@ const schemas = {
                     type: 'number'
                 },
                 border: {
+                    // type: 'checkbox',
                     fields: {
                         color: {
                             type: 'color'

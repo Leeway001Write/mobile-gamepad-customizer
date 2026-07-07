@@ -102,5 +102,11 @@ h1, h2, h3 {
     /* text-transform: none; */
 }
 .props-field {
-    margin:0;
+    margin: 0;
+}
+.props-field input {
+    margin-left: 12px;
+}
+.props-field .unit {
+    color: #999;
 }
