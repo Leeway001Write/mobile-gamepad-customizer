@@ -14,42 +14,41 @@ const schemas = {
                     type: 'color'
                 },
                 opacity: {
-                    type: 'percent'
+                    type: 'percent', default: 0
                 },
                 position: {
                     fields: {
                         x: {
-                            type: 'percent'
+                            type: 'percent', default: 20
                         },
                         y: {
-                            type: 'percent'
+                            type: 'percent', default: 20
                         }
                     }
                 },
                 size: {
                     fields: {
                         x: {
-                            type: 'percent'
+                            type: 'percent', default: 0
                         },
                         y: {
-                            type: 'percent'
+                            type: 'percent', default: 0
                         }
                     }
                 },
-                zIndex: {
-                    type: 'number'
+                layer: {
+                    type: 'number', default: 1
                 },
                 border: {
-                    // type: 'checkbox',
                     fields: {
                         color: {
                             type: 'color'
                         },
                         thickness: {
-                            type: 'pixels'
+                            type: 'pixels', default: 0
                         },
                         radius: {
-                            type: 'pixels'
+                            type: 'pixels', default: 3
                         }
                     },
                 },

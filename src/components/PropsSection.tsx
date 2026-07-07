@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import type { FieldNode } from "../properties"
 import PropsField from "./PropsField";
 
@@ -7,14 +8,16 @@ type Props = {
 };
 
 export default function PropsSection({propsFields}: Props) {
+    const [currentFields, setCurrentFields] = useState(propsFields);
+
     return (
         <>
-        { Object.entries(propsFields).map(([key, field]) => {
+        { Object.entries(currentFields).map(([key, field]) => {
             if ('type' in field) {
                 // Leaf node
                 return (
                     <p className={"props-field"} key={key}>
-                        {key}<PropsField type={field.type} />
+                        {key}<PropsField type={field.type} defaultVal={field.default} />
                     </p>
                 );
             }
