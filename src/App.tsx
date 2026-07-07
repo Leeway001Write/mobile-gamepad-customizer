@@ -85,6 +85,25 @@ function App() {
         }
     }, [])
 
+    function onEditProperties(e: FocusEvent) {
+        const inputEl = e.target as HTMLInputElement;
+
+        // Validate numeric input
+        if (inputEl.classList.contains("number")) {
+            // Is a number
+            if (Number.isNaN(Number(inputEl.value))) {
+                inputEl.value = "0";
+            }
+
+            // Is within given range
+            if (inputEl.min !== "" && Number(inputEl.value) < Number(inputEl.min)) {
+                inputEl.value = inputEl.min;
+            } else if (inputEl.max !== "" && Number(inputEl.value) > Number(inputEl.max)) {
+                inputEl.value = inputEl.max;
+            }
+        }
+    }
+
     return (
     <>
         <div className="overlay">
@@ -102,8 +121,7 @@ function App() {
             </div>
             <div className="right pane">
                 Properties
-                <PropsSection propsFields={schemas.Button} />
-                <button>Save</button>
+                <PropsSection propsFields={schemas.Button} editHandler={onEditProperties}/>
             </div>
             <div className="bottom pane">
                 Footer

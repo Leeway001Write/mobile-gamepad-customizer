@@ -1,6 +1,6 @@
 type FieldNode = {
     type: string,
-    default: string | number 
+    default?: string | number 
 } |
 {
     fields: Record<string, FieldNode>
