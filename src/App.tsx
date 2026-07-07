@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 import Screen from './components/Screen'
+import Properties from './components/Properties/Properties';
 
-import { schemas } from './properties';
 import { type ButtonProps } from './components/Screen'
-import PropsSection from './components/PropsSection';
 
 function App() {
     const defaultProps: ButtonProps = {
@@ -85,25 +84,6 @@ function App() {
         }
     }, [])
 
-    function onEditProperties(e: FocusEvent) {
-        const inputEl = e.target as HTMLInputElement;
-
-        // Validate numeric input
-        if (inputEl.classList.contains("number")) {
-            // Is a number
-            if (Number.isNaN(Number(inputEl.value))) {
-                inputEl.value = "0";
-            }
-
-            // Is within given range
-            if (inputEl.min !== "" && Number(inputEl.value) < Number(inputEl.min)) {
-                inputEl.value = inputEl.min;
-            } else if (inputEl.max !== "" && Number(inputEl.value) > Number(inputEl.max)) {
-                inputEl.value = inputEl.max;
-            }
-        }
-    }
-
     return (
     <>
         <div className="overlay">
@@ -120,8 +100,7 @@ function App() {
                 </div>
             </div>
             <div className="right pane">
-                Properties
-                <PropsSection propsFields={schemas.Button} editHandler={onEditProperties}/>
+                <Properties />
             </div>
             <div className="bottom pane">
                 Footer

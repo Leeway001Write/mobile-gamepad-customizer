@@ -2,16 +2,19 @@
 type Props = {
     type: string,
     defaultVal: string | number,
-    editHandler: Function
+    editHandler: Function,
+    path: string
 }
 
-export default function PropsField({type, defaultVal, editHandler}: Props) {
+export default function PropsField({type, defaultVal, editHandler, path}: Props) {
     switch (type) {
         case 'string': {
             return (<input
                 type="text"
                 placeholder={defaultVal as string}
-                onBlur={(e) => editHandler(e)}>
+                onBlur={(e) => editHandler(e)}
+                name={path}
+                >
             </input>)
         }
         case 'number': {
@@ -20,7 +23,9 @@ export default function PropsField({type, defaultVal, editHandler}: Props) {
                 className="number"
                 placeholder={defaultVal as string}
                 size={3}
-                onBlur={(e) => editHandler(e)}>
+                onBlur={(e) => editHandler(e)}
+                name={path}
+                >
             </input>)
         }
         case 'percent': {
@@ -31,7 +36,9 @@ export default function PropsField({type, defaultVal, editHandler}: Props) {
                     min={0} max={100}
                     size={2}
                     placeholder={defaultVal as string}
-                    onBlur={(e) => editHandler(e)}>
+                    onBlur={(e) => editHandler(e)}
+                    name={path}
+                    >
                 </input>
                 <span className="unit">%</span>
             </>)
@@ -43,7 +50,9 @@ export default function PropsField({type, defaultVal, editHandler}: Props) {
                     className="number"
                     size={5}
                     placeholder={defaultVal as string}
-                    onBlur={(e) => editHandler(e)}>
+                    onBlur={(e) => editHandler(e)}
+                    name={path}
+                    >
                 </input>
                 <span className="unit"> px</span>
             </>)
@@ -53,7 +62,9 @@ export default function PropsField({type, defaultVal, editHandler}: Props) {
                 <input
                     type="color"
                     placeholder={defaultVal as string}
-                    onBlur={(e) => editHandler(e)}>
+                    onBlur={(e) => editHandler(e)}
+                    name={path}
+                    >
                 </input>
             </>)
         }
@@ -62,7 +73,9 @@ export default function PropsField({type, defaultVal, editHandler}: Props) {
                 <input
                     type="checkbox"
                     placeholder={defaultVal as string}
-                    onBlur={(e) => editHandler(e)}>
+                    onBlur={(e) => editHandler(e)}
+                    name={path}
+                    >
                 </input>
             </>)
         }

@@ -91,15 +91,12 @@ h1, h2, h3 {
 }
 .props-header {
     font-weight: bold;
-    /* text-transform: uppercase; */
 }
 .props-fields {
     display: block;
     padding: 3px 3px 6px 18px;
 
-
     font-weight: normal;
-    /* text-transform: none; */
 }
 .props-field {
     margin: 0;
