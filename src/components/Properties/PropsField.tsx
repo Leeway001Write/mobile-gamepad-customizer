@@ -1,6 +1,7 @@
+import type { FieldType } from "../../properties"
 
 type Props = {
-    type: string, // Kind of value of this field
+    type: FieldType, // Kind of value of this field
     initialVal: string | number, // Either default value (for a new component) or current value (for an existing one)
     editHandler: Function,
     path: string // The path to this particular property. Used to identify from a root level

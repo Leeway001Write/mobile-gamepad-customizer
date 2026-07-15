@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "@Leeway001Write/shared-package-mobile-gamepad": "git+ssh://git@github.com/Leeway001Write/shared-package-mobile-gamepad.git#main"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -26,5 +27,8 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
+  },
+  "allowScripts": {
+    "github:Leeway001Write/shared-package-mobile-gamepad#a16fb1315a628140856178d3407b0500ae122361": true
   }
 }

@@ -62,5 +62,13 @@ const templates = {
     }
 }
 
+type FieldType =
+    'string'    |
+    'number'    |
+    'percent'   |
+    'pixels'    |
+    'color'     |
+    'checkbox';
+
 export { type FieldNode }
-export { templates }
+export { type FieldType }

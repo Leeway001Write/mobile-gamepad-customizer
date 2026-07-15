@@ -1,64 +1,17 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-import Screen from './components/Screen'
-import Properties from './components/Properties/Properties';
+// import Screen from './components/Screen'
+import PropertiesPane from './components/Properties/Properties';
 
-import { type ButtonProps } from './components/Screen'
+import type { FieldNode } from './properties';
+import { ButtonData } from '@Leeway001Write/shared-package-mobile-gamepad';
 
 function App() {
-    const defaultProps: ButtonProps = {
-        appearance: {
-            position: {
-                x: 25,
-                y: 10,
-            },
-            scale: {
-                x: 50,
-                y: 40,
-            },
-            circle: false,
-            forceAspectRatio: false,
-            unpressed: {
-                color: '777777',
-                opacity: 0.8,
-                border: {
-                    color: 'dddddd',
-                    thickness: 12,
-                    radius: 24,
-                },
-                text: "Press button (A)",
-                textColor: "white",
-                fontFamily: 'Consolas',
-                fontSize: 24,
-                textAlignX: 'left',
-                textAlignY: 'top',
 
-                image: undefined,
-            },
-            pressed: {
-                color: '777777',
-                opacity: 1,
-                border: {
-                    color: 'dddddd',
-                    thickness: 12,
-                    radius: 24,
-                },
-                text: "(A)",
-                textColor: "white",
-                fontFamily: 'Consolas',
-                fontSize: 24,
-                textAlignX: 'right',
-                textAlignY: 'bottom',
+    const [ compList, setCompList ] = useState<Array<Record<string, FieldNode>>>([])
 
-                image: undefined,
-            },
-            animationTime: 0,
-            zIndex: 1,
-        },
-    }
-
-    const [ toExport, setToExport ] = useState(defaultProps);
+    const [ toExport, setToExport ] = useState({});
     const [ exporting, setExporting ] = useState(false);
 
     function exportJSON(): void {
@@ -76,12 +29,13 @@ function App() {
     }
 
     useEffect(() => {
-        const autosave = localStorage.getItem("autosave");
-        if (autosave) {
-            setToExport(JSON.parse(autosave));
-        } else {
-            setToExport(defaultProps);
-        }
+        console.log((new ButtonData()).toJSON());
+        // const autosave = localStorage.getItem("autosave");
+        // if (autosave) {
+        //     setToExport(JSON.parse(autosave));
+        // } else {
+        //     setToExport(defaultProps);
+        // }
     }, [])
 
     return (
@@ -100,7 +54,7 @@ function App() {
                 </div>
             </div>
             <div className="right pane">
-                <Properties />
+                <PropertiesPane uiComp={new ButtonData()} />
             </div>
             <div className="bottom pane">
                 Footer
@@ -115,7 +69,7 @@ function App() {
         </div>
         <div className="editor">
             <div className="screen">
-                <Screen {...toExport} />
+                {/* <Screen {...toExport} /> */}
             </div>
         </div>
     </>
